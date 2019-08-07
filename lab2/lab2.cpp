@@ -109,7 +109,7 @@ void search(int a,int b,nd **root){
 			}
 			temp=temp->next;
 		}
-		cout<<"False<<endl;
+		cout<<"False"<<endl;
 		return ;
 	}
 }
