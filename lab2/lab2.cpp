@@ -98,18 +98,18 @@ void searchAtDistance(double b,nd **root){
 }
 void search(int a,int b,nd **root){
 	if(*root == NULL){
-		cout<<-1<<endl;
+		cout<<"False"<<endl;
 		return ;
 	}else{
 		nd *temp = *root;
 		while(temp != NULL){
 			if(temp->x == a && temp->y ==b){
-				cout<<0<<endl;
+				cout<<"True"<<endl;
 				return;
 			}
 			temp=temp->next;
 		}
-		cout<<-1<<endl;
+		cout<<"False<<endl;
 		return ;
 	}
 }
