@@ -24,12 +24,11 @@ void addFirst(int x,int y,nd **root){
 	}
 	
 	*root = nextNode;
-	//cout<<nextNode->x;
 	return;
 }
 void delFirst(nd **root){
 	if(*root == NULL){
-		cout<<"Empty Linked List"<<endl;
+		cout<<"-1"<<endl;
 	}else{
 		nd *temp=*root;
 		*root = temp->next;
@@ -71,7 +70,6 @@ void del(int x,int y,nd **root){
 				*root = NULL;
 				free(temp);
 			}
-			cout<<"0"<<endl;
 			return;
 		}
 	}
@@ -86,13 +84,14 @@ void searchAtDistance(double b,nd **root){
 	while(temp != NULL){
 		double x=dist(temp->x,temp->y);
 		if(x<=b){
-			cout<<"("<<temp->x<<","<<temp->y<<") ";
 			z++;
 		}
 		temp= temp->next;
 	}
 	if(z>0){
-		cout<<endl;
+		cout<<z<<endl;
+	}else if(z== 0){
+		cout<<"-1"<<'\n';
 	}
 	return;
 }
@@ -146,28 +145,21 @@ int main(){
 		switch(array[i][0]){
 			case 1:
 				cin>>array[i][1]>>array[i][2];
-				//addFirst(b,c,&root);
 				break;
 			case 2:
-				//delFirst(&root);
 				break;
 			case 3:
 				cin>>array[i][1]>>array[i][2];
-				//del(b,c,&root);
 				break;
 			case 4:
 				cin>>array[i][1];
-				//searchAtDistance(b,&root);
 				break;
 			case 5:
 				cin>>array[i][1]>>array[i][2];
-				//search(b,c,&root);
 				break;
 			case 6:
-				//Length(root);
 				break;
 			case 10:
-				//printList(root);
 				break;
 			default:
 				break;
@@ -178,22 +170,18 @@ int main(){
 	while(i<t){
 		switch(array[i][0]){
 			case 1:
-				//cin>>array[i][1]>>array[i][2];
 				addFirst(array[i][1],array[i][2],&root);
 				break;
 			case 2:
 				delFirst(&root);
 				break;
 			case 3:
-				//cin>>array[i][1]>>array[i][2];
 				del(array[i][1],array[i][2],&root);
 				break;
 			case 4:
-				//cin>>array[i][1];
 				searchAtDistance(array[i][1],&root);
 				break;
 			case 5:
-				//cin>>array[i][1]>>array[i][2];
 				search(array[i][1],array[i][2],&root);
 				break;
 			case 6:
