@@ -125,11 +125,20 @@ node *createNode(string v){
 }
 
 long long int convertInt(string str){
-    long long int res=0;
-    for(int i=0;i<str.length();i++){
-        res = res*10 + (str[i]-'0');
+    if(str[0]!='-'){
+        long long int res=0;
+        for(int i=0;i<str.length();i++){
+            res = res*10 + (str[i]-'0');
+        }
+        return res;
+    }else{
+        long long int res=0;
+        for(int i=1;i<str.length();i++){
+            res = res*10 + (str[i]-'0');
+        }
+        return res*(-1);
     }
-    return res;
+    
 }
 
 node *generateTree(vector<string> v){
@@ -157,8 +166,11 @@ node *generateTree(vector<string> v){
     return t;
 }
 string eval(string str1,string str2,char ch){
+    // cout<<'\n';
+
     long long int a = convertInt(str1);
     long long int b = convertInt(str2);
+    // cout<<str1<<"= "<<a<<'\t'<<str2<<"= "<<b<<'\n';
     long long int t;
     if(ch == '^'){
         t = floor(pow(a,b));
@@ -194,6 +206,8 @@ string inorder(node *t)
             // cout<<str1<<" "<<str2<<" "<<eval(str1,str2,c[0])<<'\t';
             return eval(str1,str2,c[0]);
         }
+    }else{
+        return "0";
     } 
 } 
 
@@ -209,12 +223,20 @@ int main(){
             cin>>str;
             string temp="";
             vector<string> ne;
+            int k=0;
             for(int i=0;i<str.length();i++){
                 if(!isOperator(str[i])){
                     temp.push_back(str[i]);
                 }
                 else{
-                    ne.push_back(temp);
+                    if((ne.size() == 0 || temp.length() == 0) && str[i]=='-' ){
+                        string d= "";
+                        d.push_back('0');
+                        ne.push_back(d);
+                    }
+                    if(temp.length()!=0){
+                        ne.push_back(temp);
+                    }
                     string d= "";
                     d.push_back(str[i]);
                     ne.push_back(d);
