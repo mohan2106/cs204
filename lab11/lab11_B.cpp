@@ -59,15 +59,16 @@ int main(){
     vector<pair<int,int>> graph[n+1+count];
     vector<int> vis(n+1+count,0);
     forz(i,m){
+		node t = adl[i];
         if((adl[i].w % 2) == 0){
-            graph[u].push_back(make_pair(x,w));
-            graph[x].push_back(make_pair(u,w));
-            graph[v].push_back(make_pair(x,w));
-            graph[x].push_back(make_pair(v,w));
+            graph[t.u].push_back(make_pair(x,0));
+            graph[x].push_back(make_pair(t.u,0));
+            graph[t.v].push_back(make_pair(x,0));
+            graph[x].push_back(make_pair(t.v,0));
             x++;
         }else{
-            graph[u].push_back(make_pair(v,w));
-            graph[v].push_back(make_pair(u,w));
+            graph[t.u].push_back(make_pair(t.v,0));
+            graph[t.v].push_back(make_pair(t.u,0));
         }
         
         
